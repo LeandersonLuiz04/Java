@@ -4,10 +4,10 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Abrigo {
-    public static Voluntario admin;
     public String nome;
     public String CNPJ;
     public String telefone;
+    public String endereco;
     public static ArrayList<Adocao> adocoes = new ArrayList<>();
     public static ArrayList<Voluntario> voluntarios = new ArrayList<>();
     public static ArrayList<Tutor> tutores = new ArrayList<>();
@@ -18,6 +18,7 @@ public class Abrigo {
         this.nome="PetLovers";
         this.CNPJ="00.873.924/0001-47";
         this.telefone="47 93321-8075";
+        this.endereco="Rua das Palmeiras, Blumenau-SC";
     }
 
 
@@ -40,15 +41,11 @@ public class Abrigo {
         System.out.println("Endereço: ");
         String endereco = reader.nextLine();
         if (endereco.isEmpty()) throw new IllegalArgumentException("Endereço não pode ser vazio.");
-        System.out.println("Login: ");
-        String login = reader.next();
-        if (login.isEmpty()) throw new IllegalArgumentException("Login não pode ser vazio.");
-        System.out.println("Senha: ");
-        String senha = reader.next();
-        if (senha.isEmpty()) throw new IllegalArgumentException("Senha não pode ser vazio.");
+        System.out.println("Especialidade(Função dentro do Abrigo): ");
+        String especialidade = reader.next();
+        if (especialidade.isEmpty()) throw new IllegalArgumentException("A especialidade não pode ser vazio.");
 
-
-        Voluntario v = new Voluntario(nome, idade, telefone, id, endereco, login, senha);
+        Voluntario v = new Voluntario(nome, idade, telefone, id, endereco, especialidade);
         voluntarios.add(v);
         System.out.println("Voluntário cadastrado com sucesso.");
     } catch (InputMismatchException e) { //É LANÇADA PELO SCANNER QUANDO O TIPO DE DADO FORNECIDO NO CONSOLE NÃO É O QUE SE ESPERA
@@ -279,6 +276,7 @@ public class Abrigo {
         System.out.println("Nome do Abrigo: " + nome);
         System.out.println("CNPJ: " + CNPJ);
         System.out.println("Telefone do Abrigo: " + telefone);
+        System.out.println("Endereço: " + endereco);
     }
 
     //PARTE DE PROCURAR POR ID ALGUM GATO, CACHORRO OU TUTOR
@@ -331,6 +329,8 @@ public class Abrigo {
         }
         return voluntario;
     }
+   
+   
     //PARTE QUE POSSIBILITA A REMOÇÃO DE ALGUM VOLUNTÁRIO OU ANIMAL
     public void removerVoluntario(Scanner reader) {
         try {

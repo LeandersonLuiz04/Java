@@ -1,13 +1,12 @@
 public class Voluntario extends Pessoa implements IConsultaDados {
-    public String login;
-    public String senha;
+    public String especialidade;
 
-    public Voluntario(String n, int i, String t, int id, String e,String l, String s){
+
+    public Voluntario(String n, int i, String t, int id, String e, String esp){
         super(n,i,t);   
         this.id=id;
         this.endereco=e;
-        this.login=l;
-        this.senha=s;
+        this.especialidade=esp;
     }
 
     @Override
@@ -17,7 +16,7 @@ public class Voluntario extends Pessoa implements IConsultaDados {
         System.out.println("Telefone: " + telefone);
         System.out.println("Endereço: " + endereco);
         System.out.println("ID: " + id);
-        System.out.println("Login: " + login);
+        System.out.println("Especialidade: " + especialidade);
 
     };
 
