@@ -62,12 +62,22 @@ public class Main {
                 case 2:
                     sistema.removerVoluntario(reader);
                     break;
-                case 3:
+                    case 3:
                     System.out.println("ID do Tutor: ");
-                    int id=reader.nextInt();
-                    reader.nextLine();
-                    System.out.println(sistema.getTutorById(id));
+                    try {
+                        if (!reader.hasNextInt()) {
+                            reader.nextLine(); // LIMPAR ENTRADA INVALIDA
+                            throw new IllegalArgumentException("ERRO AO LER DADOS DO IDENTIFICADOR.");
+                        }
+                        int id = reader.nextInt();
+                        reader.nextLine(); 
+                        System.out.println(sistema.getTutorById(id));
+                    } catch (IllegalArgumentException e) {
+                        System.out.println("PROVÁVEL ERRO: O USUÁRIO DIGITOU UMA STRING NO LUGAR DE UM NÚMERO.");
+                    }
                     break;
+                
+
                 case 4:
                     sistema.listarVoluntarios();
                     break;
@@ -106,13 +116,29 @@ public class Main {
                     break;
                 case 3:
                     System.out.println("ID do Gato: ");
-                    int id=reader.nextInt();
-                    System.out.println(sistema.getGatoById(id));
+                    try{
+                        if(!reader.hasNextInt()){
+                            reader.nextLine(); //LIMPAR ENTRADA INVALIDA
+                            throw new IllegalArgumentException("ERRO AO LER DADOS DO IDENTIFICADOR.");
+                        }	
+                        int id=reader.nextInt();
+                        System.out.println(sistema.getGatoById(id));
+                } catch(IllegalArgumentException e){
+                    System.out.println("PROVÁVEL ERRO: O USUARIO DIGITOU UMA STRING NO LUGAR DE UM NÚMERO.");
+                }
                     break;
                 case 4:
                     System.out.println("ID do Cachorro: ");
-                    int ID=reader.nextInt();
-                    System.out.println(sistema.getCachorroById(ID));
+                    try{
+                        if(!reader.hasNextInt()){
+                            reader.nextLine(); //PARA LdIMPAR ENTRADA INVALIDA
+                            throw new IllegalArgumentException("ERRO AO LER DADOS DO IDENTIFICADOR.");
+                        }
+                        int ID=reader.nextInt();
+                        System.out.println(sistema.getCachorroById(ID));
+                } catch(IllegalArgumentException e){
+                    System.out.println("PROVÁVEL ERRO: O USUARIO DIGITOU UMA STRING NO LUGAR DE UM NÚMERO.");
+                }
                     break;
                 case 5:
                     sistema.listarAnimais();
